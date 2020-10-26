@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VideoGameListApp.GameDetailPage"
+             xmlns:models="clr-namespace:VideoGameListApp.Models">
+    <ContentPage.Content>
+        <StackLayout x:DataType="models:VideoGame">
+            <Label Text="{Binding Title, Mode=TwoWay}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Genre}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding ReleaseDate}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand" Source="{Binding CoverPictureURL}"></Image>
+            <Button Text="DebugKnop" Clicked="TimeForDebug"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
