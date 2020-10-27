@@ -16,7 +16,15 @@ namespace VideoGameListApp.Models
             } 
         }
         public string Genre { get; set; }
-        public int Rating { get; set; }
+        private int _rating;
+        public int Rating { 
+            get => _rating;
+            set
+            {
+                _rating = value;
+                RaiseChangedEvent(nameof(Rating));
+            }
+        }
         public DateTime ReleaseDate { get; set; }
         public string CoverPictureURL { get; set; }
 

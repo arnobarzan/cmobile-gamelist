@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VideoGameListApp.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace VideoGameListApp
@@ -12,7 +14,7 @@ namespace VideoGameListApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GameListPage : ContentPage
     {
-        private List<VideoGame> listInCSharp = new List<VideoGame>
+        private ObservableCollection<VideoGame> listInCSharp = new ObservableCollection<VideoGame>
         {
             new VideoGame {Title="GTA5", Genre="Action", Rating=95, ReleaseDate=new DateTime(2013,01,01), CoverPictureURL="https://gamegasm.files.wordpress.com/2013/04/actual_1364906194.jpg"},
             new VideoGame {Title="Fortnite", Genre="Shooter", Rating=8, ReleaseDate=new DateTime(2017,01,01), CoverPictureURL="https://www.gamevideos.nl/storage/1491/fortnite.jpg"},
@@ -35,6 +37,26 @@ namespace VideoGameListApp
              */
             await this.Navigation.PushAsync(new GameDetailPage(selectedGame));
             ((ListView)sender).SelectedItem = null;
+
+        }
+
+        private async void AddANewGame(object sender, EventArgs e)
+        {
+            VideoGame newGame = new VideoGame();
+            string title = await DisplayPromptAsync("Wat is de titel?", "");
+            string genre = await DisplayPromptAsync("Wat is het genre?", "");
+
+            newGame.Title = title;
+            newGame.Genre = genre;
+            newGame.CoverPictureURL = null;
+
+            listInCSharp.Add(newGame);
+        }
+
+        private void RemoveThisGame(object sender, EventArgs e)
+        {
+            ImageButton button = sender as ImageButton;
+            listInCSharp.Remove(button.CommandParameter as VideoGame);
         }
     }
 }
