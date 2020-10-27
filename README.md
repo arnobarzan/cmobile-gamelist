@@ -1,1 +1,1 @@
-Voorbeeld ListView week 7
+Voorbeeld ListView week 6
