@@ -34,6 +34,7 @@ namespace VideoGameListApp
              * VideoGame selectedGame = (VideoGame) e.Item; 
              */
             await this.Navigation.PushAsync(new GameDetailPage(selectedGame));
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
