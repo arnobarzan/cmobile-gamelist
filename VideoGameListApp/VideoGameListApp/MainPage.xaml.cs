@@ -10,6 +10,7 @@ namespace VideoGameListApp
 {
     public partial class MainPage : ContentPage
     {
+        private ContentPage _pageWithTheList = new GameListPage();
         public MainPage()
         {
             InitializeComponent();
@@ -17,7 +18,7 @@ namespace VideoGameListApp
 
         private async void GoToGamePage(object sender, EventArgs e)
         {
-            await this.Navigation.PushAsync(new GameListPage());
+            await this.Navigation.PushAsync(_pageWithTheList);
         }
     }
 }

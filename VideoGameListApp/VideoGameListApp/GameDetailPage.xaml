@@ -2,20 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VideoGameListApp.GameDetailPage"
-             xmlns:models="clr-namespace:VideoGameListApp.Models">
+             xmlns:models="clr-namespace:VideoGameListApp.Models"
+             x:DataType="models:VideoGame">
     <ContentPage.Content>
-        <StackLayout x:DataType="models:VideoGame">
+        <StackLayout>
             <Label Text="{Binding Title, Mode=TwoWay}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Label Text="{Binding Genre}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Entry Text="{Binding Rating}" 
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand"></Entry>
             <Label Text="{Binding ReleaseDate}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Image VerticalOptions="FillAndExpand" 
-                HorizontalOptions="FillAndExpand" Source="{Binding CoverPictureURL}"></Image>
+                HorizontalOptions="FillAndExpand" Source="{Binding CoverPictureURL, TargetNullValue='trash.png'}"></Image>
             <Button Text="DebugKnop" Clicked="TimeForDebug"></Button>
         </StackLayout>
     </ContentPage.Content>
