@@ -1,0 +1,7 @@
+
+.vs/**/**
+VideoGameListApp/VideoGameListApp.Android/**/**
+VideoGameListApp/VideoGameListApp/bin/**/**
+VideoGameListApp/VideoGameListApp/obj/**/**
+VideoGameListApp.sln
+VideoGameListApp/VideoGameListApp/VideoGameListApp.csproj
