@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -7,6 +8,9 @@ namespace VideoGameListApp.Models
 {
     public class VideoGame: INotifyPropertyChanged
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         private string _title;
         public string Title { get => _title; 
             set
