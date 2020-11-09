@@ -8,7 +8,7 @@ namespace VideoGameListApp
     public partial class App : Application
     {
 
-        static SQLiteDataService database;
+        private static SQLiteDataService database;
         public static SQLiteDataService Database
         {
             get

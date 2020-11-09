@@ -13,7 +13,7 @@ namespace VideoGameListApp.Database
         readonly SQLiteAsyncConnection _database;
         public SQLiteDataService()
         {
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "OurDB.db3");
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "OurDB2.db3");
             _database = new SQLiteAsyncConnection(path);
             _database.CreateTableAsync<VideoGame>().Wait();
         }
