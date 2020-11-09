@@ -15,6 +15,15 @@ namespace VideoGameListApp.Models
                 RaiseChangedEvent(nameof(Title));
             } 
         }
+
+        private bool _isFavorite;
+        public bool IsFavorite { get => _isFavorite; 
+            set
+            {
+                _isFavorite = value;
+                RaiseChangedEvent(nameof(IsFavorite));
+            }
+        }
         public string Genre { get; set; }
         private int _rating;
         public int Rating { 

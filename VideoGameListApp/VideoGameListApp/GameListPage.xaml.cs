@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VideoGameListApp.Models;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
 using Xamarin.Forms.Xaml;
@@ -27,6 +28,8 @@ namespace VideoGameListApp
 
             /* Bind the List to the ListView (xaml) */
             GameListElement.ItemsSource = listInCSharp;
+
+            updateFavorite();
         }
 
         private async void VideoGameTapped(object sender, ItemTappedEventArgs e)
@@ -51,6 +54,22 @@ namespace VideoGameListApp
             newGame.CoverPictureURL = null;
 
             listInCSharp.Add(newGame);
+        }
+
+        private void updateFavorite()
+        {
+            foreach (var item in listInCSharp)
+            {
+                item.IsFavorite = item.Title == Preferences.Get("favoriteName", ""); 
+            }
+        }
+
+        private void makeFavorite(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            string name = (button.CommandParameter as VideoGame).Title;
+            Preferences.Set("favoriteName", name);
+            updateFavorite();
         }
 
         private void RemoveThisGame(object sender, EventArgs e)

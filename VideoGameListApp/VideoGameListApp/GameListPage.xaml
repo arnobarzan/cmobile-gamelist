@@ -21,14 +21,16 @@
                                     <ColumnDefinition Width="2*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="{Binding CoverPictureURL, TargetNullValue='trash.png'}"></Image>
                                 <Label Grid.Column="1" FontSize="30" Text="{Binding Title}"></Label>
-                                <Label Grid.Column="2" Text="{Binding Genre}"></Label>
+                                <Label Grid.Column="2" Text="{Binding IsFavorite}"></Label>
                                 <ImageButton Grid.Column="3" Source="trash.png" 
                                              BackgroundColor="{Binding Rating, Converter={StaticResource RatingConverter}}"
                                              Clicked="RemoveThisGame"
                                              CommandParameter="{Binding .}"></ImageButton>
+                                <Button CommandParameter="{Binding .}" Clicked="makeFavorite" Text="MakeFavorite"></Button>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
