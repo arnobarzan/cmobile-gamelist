@@ -19,7 +19,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Image VerticalOptions="FillAndExpand" 
-                HorizontalOptions="FillAndExpand" Source="{Binding CoverPictureURL, TargetNullValue='trash.png'}"></Image>
+                HorizontalOptions="FillAndExpand" Source="{Binding CoverPictureURL, TargetNullValue='preview.png'}"></Image>
             <Button Text="DebugKnop" Clicked="TimeForDebug"></Button>
         </StackLayout>
     </ContentPage.Content>
