@@ -16,7 +16,7 @@ namespace VideoGameListApp.Models
             set
             {
                 _title = value;
-                RaiseChangedEvent(nameof(Title));
+                //RaiseChangedEvent(nameof(Title));
             } 
         }
 
@@ -29,7 +29,7 @@ namespace VideoGameListApp.Models
             set
             {
                 _rating = value;
-                RaiseChangedEvent(nameof(Rating));
+                //RaiseChangedEvent(nameof(Rating));
             }
         }
 
@@ -40,7 +40,7 @@ namespace VideoGameListApp.Models
             get => _coverPictureURL;
             set {
                 _coverPictureURL = value;
-                RaiseChangedEvent(nameof(CoverPictureURL));
+                //RaiseChangedEvent(nameof(CoverPictureURL));
             } 
         }
 

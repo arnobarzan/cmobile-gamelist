@@ -2,27 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VideoGameListApp.GameDetailPage"
-             xmlns:models="clr-namespace:VideoGameListApp.Models"
-             x:DataType="models:VideoGame">
+             xmlns:models="clr-namespace:VideoGameListApp.Models" 
+             xmlns:behaviors="clr-namespace:VideoGameListApp.Behaviors" 
+             xmlns:viewmodel="clr-namespace:VideoGameListApp.ViewModel"
+             x:DataType="viewmodel:VideoGameDetailViewModel">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="{Binding Title, Mode=TwoWay}"
+                <Entry Text="{Binding Game.Title, Mode=TwoWay}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Label Text="{Binding Genre}"
+                <Entry Text="{Binding Game.Genre}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Entry Text="{Binding Rating}" 
+                <Entry Text="{Binding Game.Rating}" 
                    VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="FillAndExpand"></Entry>
-                <Label Text="{Binding ReleaseDate}"
+                HorizontalOptions="FillAndExpand">
+                    <Entry.Behaviors>
+                        <behaviors:RatingBehavior></behaviors:RatingBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="{Binding Game.ReleaseDate}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
                 <Image VerticalOptions="FillAndExpand" 
-                HorizontalOptions="FillAndExpand" Source="{Binding CoverPictureURL, TargetNullValue='preview.png'}"></Image>
-                <Button Text="Take picture" x:Name="PictureButton"></Button>
-                <Button Text="Save" Clicked="SaveGame"></Button>
+                HorizontalOptions="FillAndExpand" Source="{Binding Game.CoverPictureURL, TargetNullValue='preview.png'}"></Image>
+                <Button Text="Take picture" Command="{Binding AddPictureCommand}"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
