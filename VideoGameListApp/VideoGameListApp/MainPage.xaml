@@ -8,6 +8,12 @@
             <Label Text="Welcome to our game app" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Button Text="To the list" Clicked="GoToGamePage"></Button>
+        <Button Text="Star War Movies" Clicked="GoToFilms"></Button>
+        <Button Text="Alle Gebruikers uit mijn App" Clicked="GoToGebruikers"></Button>
+        <Button Text="Get Random Person" Clicked="RandomPersonGet"></Button>
+        <Label Text="{Binding name.first}"></Label>
+        <Label Text="{Binding name.last}"></Label>
+        <Image Source="{Binding picture.large}"></Image>
     </StackLayout>
 
 </ContentPage>

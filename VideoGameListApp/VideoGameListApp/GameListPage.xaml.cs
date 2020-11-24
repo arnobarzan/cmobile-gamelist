@@ -23,9 +23,7 @@ namespace VideoGameListApp
         private async void VideoGameTapped(object sender, ItemTappedEventArgs e)
         {
             VideoGame selectedGame = e.Item as VideoGame;
-            /* // Or do:
-             * VideoGame selectedGame = (VideoGame) e.Item; 
-             */
+
             VideoGameDetailViewModel viewmodel = new VideoGameDetailViewModel(selectedGame);
             GameDetailPage page = new GameDetailPage();
             page.BindingContext = viewmodel;
