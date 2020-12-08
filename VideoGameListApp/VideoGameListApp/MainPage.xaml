@@ -8,6 +8,9 @@
             <Label Text="Welcome to our game app" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Button Text="To the list" Clicked="GoToGamePage"></Button>
+        <Entry x:Name="BackupName" Text="test.db"></Entry>
+        <Button Text="Save Backup DB" Clicked="SaveDB"></Button>
+        <Button Text="Load Backup DB" Clicked="LoadDB"></Button>
     </StackLayout>
 
 </ContentPage>

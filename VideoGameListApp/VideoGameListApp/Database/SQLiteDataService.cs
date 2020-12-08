@@ -10,11 +10,36 @@ namespace VideoGameListApp.Database
 {
     public class SQLiteDataService
     {
-        readonly SQLiteAsyncConnection _database;
+        private static string locationDB = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PROAvoorbeeld.db3");
+        private static string locationDBBackup = "/sdcard/";
+
+        private static SQLiteAsyncConnection _database;
         public SQLiteDataService()
         {
-            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "OurDB2.db3");
-            _database = new SQLiteAsyncConnection(path);
+            _database = new SQLiteAsyncConnection(locationDB);
+            _database.CreateTableAsync<VideoGame>().Wait();
+        }
+
+        private void CopyDatabase(string fromPath, string toPath)
+        {
+            var bytes = System.IO.File.ReadAllBytes(fromPath);
+            var fileCopyName = toPath;
+            System.IO.File.WriteAllBytes(fileCopyName, bytes);
+        }
+
+        public void SaveBackup(string nameFile)
+        {
+            // adb pull this one 
+            // example: adb pull /sdcard/backup.db
+            CopyDatabase(locationDB, locationDBBackup + nameFile);
+        }
+
+        public void LoadBackup(string nameFile)
+        {
+            // adb push this one 
+            // example: adb push newdb.db /sdcard/newdb.db
+            CopyDatabase(locationDBBackup + nameFile, locationDB);
+            _database = new SQLiteAsyncConnection(locationDB);
             _database.CreateTableAsync<VideoGame>().Wait();
         }
 
